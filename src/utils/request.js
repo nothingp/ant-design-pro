@@ -1,5 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
+import { stringify } from 'qs';
 import { routerRedux } from 'dva/router';
 import store from '../index';
 
@@ -51,10 +52,11 @@ export default function request(url, options) {
     if (!(newOptions.body instanceof FormData)) {
       newOptions.headers = {
         Accept: 'application/json',
-        'Content-Type': 'application/json; charset=utf-8',
+        // 'Content-Type': 'application/json; charset=utf-8',
         ...newOptions.headers,
       };
-      newOptions.body = JSON.stringify(newOptions.body);
+      // newOptions.body = JSON.stringify(newOptions.body);
+      newOptions.body = stringify(newOptions.body);
     } else {
       // newOptions.body is FormData
       newOptions.headers = {
