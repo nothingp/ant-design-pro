@@ -19,6 +19,7 @@ export default {
       });
       // Login successfully
       if (response.status === 'ok') {
+        localStorage.setItem('token',response.access_token);
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
