@@ -1,0 +1,775 @@
+// 公用的样式
+// by KB
+// 16.12.16
+//为了避免多个文件都同时import的情况下会多次编译相同的class
+@import './common.less';
+
+.iconfont,
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: #333;
+}
+
+a {
+  &:hover {
+    color: darken(@fc_link, 15%);
+  }
+  // 运营产品都提过好多次按钮点击后下横线一直留着
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+//清浮动
+.clear {
+  &:after {
+    content: '';
+    width: 100%;
+    height: 0;
+    zoom: 1;
+    clear: both;
+  }
+}
+
+#root {
+  position: relative;
+  padding: 120px 0 50px 0;
+  min-width: @container;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #f2f2f2;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica,
+    'PingFang SC', 'Hiragino Sans GB', SimSun, sans-serif;
+
+  &:after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 0;
+    zoom: 1;
+    clear: both;
+  }
+}
+
+.app {
+  overflow: hidden;
+}
+
+// .container {
+//     position: relative;
+//     margin: 0 auto;
+//     width: @container;
+//     min-height: 100%;
+//     overflow: hidden;
+// }
+
+.mt30 {
+  margin-top: 30px !important;
+}
+
+//快速浮动
+.t-l {
+  float: left;
+}
+
+.t-r {
+  float: right;
+}
+
+//文字居中
+.text-center {
+  text-align: center;
+}
+
+.ant-btn {
+  border-radius: 2px;
+}
+
+.ant-tooltip-inner {
+  word-wrap: break-word;
+  max-width: 650px;
+}
+
+.fc-btn {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #333;
+  box-sizing: border-box;
+  border-radius: 2px;
+  vertical-align: middle;
+  cursor: pointer;
+  .transition(0.4s);
+  &.btn-primary {
+    background: @primary;
+    border: 0;
+    &:hover,
+    &:focus {
+      color: #333;
+      background: darken(@primary, 10%);
+    }
+    &[disabled]:hover {
+      color: rgba(0, 0, 0, 0.25);
+      background: @primary;
+    }
+  }
+  &.btn-blue {
+    background: @bule;
+    color: #fff;
+    &:hover {
+      background: darken(@bule, 10%);
+      border-color: @bule;
+    }
+  }
+  &.btn-normal {
+    background: @narmal;
+    color: inherit;
+    &:hover {
+      color: #333;
+      background: darken(@narmal, 10%);
+    }
+    // &:visited {
+    //     color: #333;
+    //     background: darken(@narmal, 20%);
+    // }
+  }
+  &.btn-default {
+    border: 1px solid @bc;
+    background: #fff;
+    &:hover {
+      color: #333;
+      border-color: @gray;
+      background: @gray;
+    }
+    &:focus {
+      color: inherit;
+    }
+  }
+  &.btn-default-toBlur {
+    border: 1px solid #c5c5c5;
+    background: #fff;
+    &:hover {
+      border-color: @bule;
+      color: @bule;
+    }
+    &:focus {
+      color: inherit;
+    }
+  }
+  &.btn-default-bd {
+    border: 1px solid @narmal;
+    background: #fff;
+    line-height: 38px;
+    &:hover {
+      color: #333;
+      border-color: #b3b3b3;
+    }
+    &:focus {
+      color: inherit;
+    }
+  }
+  &.btn-disable {
+    color: #999;
+    background: @gray;
+    cursor: not-allowed;
+
+    &:hover {
+      color: #999;
+    }
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+//重置某些antd的样式
+//按钮占宽度比例百分之一百
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+//居中antd带的分页
+.fc-page {
+  text-align: center;
+  > ul,
+  .ant-pagination {
+    display: inline-block;
+  }
+}
+
+.fc-box {
+  padding: 30px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #e4e4e4;
+}
+
+.fc-table {
+  //去除表格padding、border
+  .ant-table-tbody > tr > td {
+    padding: 0;
+    border-bottom: 0;
+  }
+  //去除表格hover高亮
+  .ant-table-tbody > tr:hover {
+    background: none;
+  }
+  .ant-table-tbody > tr:hover > td {
+    background: none;
+  }
+  .clearfix {
+    text-align: center;
+  }
+  .ant-table-pagination {
+    display: block;
+    text-align: center;
+    // display: inline-block;
+    float: none;
+  }
+}
+
+.fc-tabs {
+  .ant-tabs-bar {
+    margin: 0;
+  }
+  .fc-box {
+    position: relative;
+    margin: -2px 0 0 0 !important;
+    border-top: 0;
+  }
+  .tab-top-info {
+    margin-bottom: 20px;
+  }
+  .tab-list {
+    border-top: 1px solid @bc;
+  }
+  //去除固定高度的样式
+  .ant-tabs-nav-container {
+    height: auto !important;
+  }
+  .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    padding: 30px 45px 25px;
+    margin-right: 0;
+    background: none;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+  }
+  .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+    background: #fff;
+    border: 1px solid @bc;
+  }
+}
+
+.fc-steps {
+  padding: 40px;
+  .hd {
+    margin-bottom: 36px;
+    h3 {
+      font-size: 36px;
+      text-align: center;
+      line-height: 1;
+      font-weight: normal;
+    }
+    p {
+      width: 440px;
+      margin: 26px auto 0;
+      line-height: 1.2;
+    }
+  }
+  .ant-steps {
+    .ant-steps-main {
+      margin-top: 0;
+    }
+  }
+}
+
+.fc-s-item {
+  margin-bottom: 20px;
+}
+
+.fc-s-c-press {
+  color: @gray_press;
+}
+
+.fc-s-c-support {
+  color: @support;
+}
+
+.fc-label-required {
+  .ant-form-item-required {
+    &:before {
+      display: none;
+    }
+    &:after {
+      display: inline-block;
+      margin-right: 4px;
+      content: '* ' !important;
+      // font-family: SimSun;
+      line-height: 1;
+      font-size: 14px;
+      color: #f00;
+    }
+  }
+}
+
+//antd主题按钮文字颜色为黑色
+.ant-btn-primary {
+  span {
+    color: #333;
+  }
+}
+
+.ant-form-item-label label:after {
+  content: '' !important;
+}
+
+.fc-txt-dot {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.ant-form-item > .ant-form-item.formItem-floor,
+.ant-form-item :not(.ant-form) > .ant-form-item.formItem-floor {
+  margin-bottom: 0;
+}
+
+.fc-select {
+  &.ant-select-lg .ant-select-selection--single {
+    .ant-select-selection__rendered {
+      line-height: 38px;
+    }
+  }
+}
+
+// fan - 预览图片
+.modal-previewImg {
+  text-align: center;
+  img {
+    max-width: 100%;
+    max-height: 600px;
+    border: 1px solid #eee;
+  }
+}
+
+// fan - 清楚浮动（前面的.clear有点问题）
+.cf {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    overflow: hidden;
+  }
+  &:after {
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+// fan 提醒成功
+/*.ant-confirm-success{
+    .ant-confirm-body{
+        padding: 30px 40px 0;
+        text-align: center;
+        .anticon,
+        .ant-confirm-title{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .anticon{
+            float: none;
+            font-size: 36px;
+        }
+        .ant-confirm-title{
+            font-weight: normal;
+            font-size: 24px;
+            color: #333;
+        }
+    }
+    .ant-confirm-btns{
+        button{
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+    }
+}*/
+
+// fan confirm弹框
+.ant-confirm-confirm,
+.modal-wrap-confirm {
+  .ant-modal-footer,
+  .ant-confirm-btns {
+    font-weight: normal;
+    display: block;
+    margin-top: 0;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    button {
+      float: right;
+      width: 120px;
+      height: 40px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+  }
+  .ant-confirm-content {
+    margin: 38px 0 40px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    h2,
+    h3,
+    h4 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .anticon {
+      margin-right: 8px;
+      font-size: 36px;
+      &,
+      & + span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &.red {
+        color: #e45454;
+      }
+      &.green {
+        color: #5bc52d;
+      }
+    }
+    p {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}
+
+.modal-wrap-confirm {
+  .ant-modal-footer {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.ant-confirm-confirm {
+  width: 600px !important;
+
+  .ant-modal-body {
+    padding: 0;
+  }
+  .anticon-question-circle {
+    display: none;
+  }
+  .ant-confirm-title {
+    display: block;
+    padding-left: 30px;
+    border-bottom: 1px solid #e4e4e4;
+    line-height: 48px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+}
+
+.ant-confirm-warning {
+  width: 600px !important;
+  .ant-modal-body {
+    padding: 66px 30px 20px;
+  }
+  .ant-confirm-body {
+    text-align: center;
+  }
+  .ant-confirm-title,
+  .anticon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .anticon {
+    float: none;
+    font-size: 36px;
+  }
+  .ant-confirm-title {
+    font-size: 24px;
+    color: #333;
+  }
+  .ant-confirm-content {
+    margin-top: 12px;
+    margin-left: 0;
+    text-align: center;
+    color: #999;
+  }
+  .ant-btn {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+// fan pop鼠标手势改成自动
+.ant-popover {
+  cursor: auto;
+}
+
+.fc-status {
+  .tt {
+    margin-bottom: 28px;
+    line-height: 1;
+    text-align: center;
+    font-size: 26px;
+    .anticon {
+      display: inline-block;
+      margin-right: 12px;
+      margin-top: -4px;
+      vertical-align: top;
+      font-size: 36px;
+    }
+    .green {
+      color: @green;
+    }
+    .red {
+      color: @fc_warn;
+    }
+    .gray {
+      color: @gray_press;
+    }
+  }
+  .line {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 22px;
+    font-weight: normal;
+    vertical-align: top;
+  }
+}
+
+.funya-step {
+  padding-bottom: 70px;
+  .steps {
+    width: 540px;
+    margin-bottom: 0;
+  }
+}
+
+.s-inputVal {
+  font-size: 16px;
+}
+
+// fan 滚动条样式
+.ant-cascader-menu::-webkit-scrollbar {
+  margin-right: 4px;
+  opacity: 1;
+  background: #f3f3f3;
+  // -webkit-appearance: none;
+}
+
+.ant-cascader-menu::-webkit-scrollbar:vertical {
+  opacity: 1;
+  width: 5px;
+  height: 30px;
+}
+
+.ant-cascader-menu::-webkit-scrollbar-thumb {
+  opacity: 1;
+  border-radius: 20px;
+  background-color: #cecece;
+}
+
+// fan新增
+.ant-message-notice {
+  .ant-message-notice-content {
+    border: 1px solid #fff3cf;
+    background-color: #fffaeb;
+    padding: 8px 48px 8px 38px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .anticon {
+    font-size: 16px;
+    color: #ffbf00;
+  }
+}
+
+.ant-form {
+  &.label-to-left {
+    .ant-form-item-label {
+      text-align: left;
+    }
+  }
+  &.label-to-right {
+    .ant-form-item-label {
+      text-align: right;
+    }
+  }
+  // fan新增
+  // 文字右对齐，星号在右边浮动出去
+  &.label-to-right.alignright {
+    .ant-form-item-label {
+      overflow: visible;
+      label {
+        &:after {
+          position: absolute;
+          margin: 0;
+        }
+      }
+    }
+    .ant-form-item-required {
+      position: relative;
+      &:before {
+        display: none;
+      }
+      &:after {
+        top: 0;
+        right: -12px;
+        content: '*' !important;
+        display: inline-block;
+        margin-left: 4px;
+        line-height: 22px;
+        // font-family: SimSun;
+        font-size: 14px;
+        color: #f00;
+      }
+    }
+  }
+  .ant-calendar-picker {
+    min-width: 174px !important;
+  }
+}
+
+//去除表格分页
+// .ant-pagination-item, .ant-pagination-jump-next {
+//     display: none;
+// }
+
+//全屏弹框
+.fc-full-screen-modal {
+  display: block;
+  // top: 0;
+  // left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  // z-index: 999;
+
+  .ant-modal {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0;
+    padding-bottom: 0;
+  }
+  &.z-none {
+    opacity: 0.9;
+    .ant-modal-content {
+      position: static;
+    }
+    .ant-modal-body {
+      padding: 0;
+    }
+    .ant-spin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -20px;
+      margin-top: -20px;
+    }
+  }
+}
+
+/**
+*ant-confirm-success
+*成功弹框
+*/
+.ant-confirm-success {
+  width: 600px !important;
+  box-sizing: border-box;
+
+  .ant-modal-body {
+    padding: 20px 30px !important;
+  }
+
+  .ant-confirm-body {
+    padding: 40px 0;
+    margin-top: 34px;
+    text-align: center;
+
+    .anticon {
+      float: none;
+      font-size: 36px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .ant-confirm-title {
+      display: inline-block;
+      color: #333;
+      vertical-align: middle;
+      margin-top: 0;
+      max-width: 450px;
+      text-align: left;
+    }
+
+    .ant-confirm-content {
+      margin-top: 0;
+    }
+  }
+
+  .ant-confirm-btns {
+    button {
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+    }
+  }
+}
+
+//分页跳转
+.ant-pagination-options-quick-jumper input {
+  height: 30px;
+}
+
+//分页pagesize切换
+.ant-pagination-options-size-changer {
+  .ant-select-selection--single {
+    height: 28px;
+  }
+
+  .ant-select-selection__rendered {
+    line-height: 28px;
+  }
+}
+
+// 兼容ie浏览的
+.ant-cascader-menu {
+  box-sizing: content-box;
+}
+
+//适配spin出现会动一动
+.ant-spin-container {
+  transition: none;
+}

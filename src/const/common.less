@@ -1,0 +1,56 @@
+// 颜色规范
+// by KB
+// 16.12.13
+
+//页面宽度
+@container: 1180px;
+
+//【字体颜色】--依次为主要、次要、辅助
+@fc_1: #333;
+@fc_2: #666;
+@fc_3: #999;
+
+//超链接
+@fc_link: #39c;
+@fc_warn: #e54545;
+
+//页面背景色
+@background: #f2f2f2;
+
+//分割线、边框、按钮色
+@bc: #ededed;
+
+//黄色
+@primary: #ffc135;
+@narmal: #e4e4e4;
+@bule: #39c; // ??你们拼错了！！blue才对！！
+
+//【作为按钮时】依次为选中、按下、禁止、禁止时候字体的颜色
+@yellow_hover: #ffb026;
+@yellow_press: #ff9c24;
+@yellow_disable: #ffd166;
+@yellow_test_disable: #999;
+
+//灰色
+@gray: #e4e4e4;
+
+//【作为按钮时】依次为选中、按下、禁止、禁止时候字体的颜色
+@gray_hover: #ccc;
+@gray_press: #999;
+@gray_disable: #e4e4e4;
+@yellow_test_disable: #999;
+
+//绿色
+@green: #6c3;
+
+//辅助色
+@support: #f66;
+
+.transition(@time: 0.3s) {
+  transition: @time;
+}
+
+.container(@default: 1180px) {
+  margin: 0 auto;
+  width: @default;
+}

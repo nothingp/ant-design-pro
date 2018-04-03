@@ -22,4 +22,5 @@ export default {
   disableDynamicImport: true,
   publicPath: '/',
   hash: true,
+  theme: './theme.js',
 };
