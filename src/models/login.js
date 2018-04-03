@@ -11,20 +11,23 @@ export default {
   },
 
   effects: {
-    *login({ payload }, { call, put }) {
+    * login({ payload }, { call, put }) {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       });
+      console.log('log', response);
       // Login successfully
       if (response.status === 'ok') {
-        localStorage.setItem('token',response.access_token);
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
+      if (response && response.access_token) {
+        localStorage.setItem('token', response.access_token);
+      }
     },
-    *logout(_, { put, select }) {
+    * logout(_, { put, select }) {
       try {
         // get location pathname
         const urlParams = new URL(window.location.href);
