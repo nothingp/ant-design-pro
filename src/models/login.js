@@ -11,13 +11,13 @@ export default {
   },
 
   effects: {
-    *login({ payload }, { call, put }) {
+    * login({ payload }, { call, put }) {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       });
-      // console.log('response', response);
+      window.console.log('response', response);
       // Login successfully
       if (response.status === 'ok') {
         reloadAuthorized();
@@ -31,7 +31,7 @@ export default {
     //   const response = yield call(fakeTesting, payload);
     //   console.log('response', response);
     // },
-    *logout(_, { put, select }) {
+    * logout(_, { put, select }) {
       try {
         // get location pathname
         const urlParams = new URL(window.location.href);
