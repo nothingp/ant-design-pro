@@ -7,14 +7,17 @@ import styles from './Login.less';
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
-@connect(({ login, loading }) => ({
+@connect(({ login, test, loading }) => ({
   login,
+  test,
   submitting: loading.effects['login/login'],
+  testing: loading.effects['test/test'],
 }))
 export default class LoginPage extends Component {
   state = {
     type: 'account',
     autoLogin: true,
+    // disabled: false,
   };
 
   onTabChange = type => {
@@ -32,6 +35,17 @@ export default class LoginPage extends Component {
         },
       });
     }
+  };
+
+  handleTest = () => {
+    window.console.log('log', 3333333333333);
+    this.props.dispatch({
+      type: 'test/test',
+      payload: {},
+    });
+    // this.setState({
+    //   disabled: true,
+    // })
   };
 
   changeAutoLogin = e => {
@@ -70,9 +84,9 @@ export default class LoginPage extends Component {
             <Checkbox checked={this.state.autoLogin} onChange={this.changeAutoLogin}>
               自动登录
             </Checkbox>
-            <a style={{ float: 'right' }} href="">
+            <span style={{ float: 'right' }} onClick={this.handleTest}>
               忘记密码
-            </a>
+            </span>
           </div>
           <Submit loading={submitting}>登录</Submit>
           <div className={styles.other}>

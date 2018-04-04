@@ -61,14 +61,18 @@ export async function queryFakeList(params) {
 }
 
 export async function fakeAccountLogin(params) {
-  return request(
-    'http://gateway.test.fengchaoli.com/uaa/oauth/token?grant_type=client_credentials',
-    {
-      method: 'POST',
-      body: params,
-    }
-  );
+  return request('http://gateway.test.fengchaoli.com/uaa/oauth/token', {
+    method: 'POST',
+    body: { ...params, grant_type: 'client_credentials' },
+  });
 }
+
+// export async function fakeTesting(params) {
+//   return request('http://gateway.test.fengchaoli.com/rest/open/api/test/demo', {
+//     method: 'POST',
+//     body: { ...params, id: 1 },
+//   });
+// }
 
 export async function fakeRegister(params) {
   return request('/api/register', {

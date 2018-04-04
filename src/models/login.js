@@ -11,23 +11,27 @@ export default {
   },
 
   effects: {
-    * login({ payload }, { call, put }) {
+    *login({ payload }, { call, put }) {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       });
-      console.log('log', response);
+      // console.log('response', response);
       // Login successfully
       if (response.status === 'ok') {
         reloadAuthorized();
         yield put(routerRedux.push('/'));
       }
       if (response && response.access_token) {
-        localStorage.setItem('token', response.access_token);
+        localStorage.setItem('accessToken', JSON.stringify(response));
       }
     },
-    * logout(_, { put, select }) {
+    // *test({ payload }, { call, put }) {
+    //   const response = yield call(fakeTesting, payload);
+    //   console.log('response', response);
+    // },
+    *logout(_, { put, select }) {
       try {
         // get location pathname
         const urlParams = new URL(window.location.href);

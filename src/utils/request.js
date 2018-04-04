@@ -21,6 +21,7 @@ const codeMessage = {
   503: '服务不可用，服务器暂时过载或维护。',
   504: '网关超时。',
 };
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -44,6 +45,10 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
+  const accessToken = localStorage.getItem('accessToken') || '{}';
+  const token = JSON.parse(accessToken).access_token;
+  console.log('accessToken', accessToken);
+  const restUrl = token ? url.indexOf('?') > -1 ? (`${url}&access_token=${token}`) : (`${url}?access_token=${token}`) : url;
   const defaultOptions = {
     credentials: 'include',
   };
@@ -53,6 +58,7 @@ export default function request(url, options) {
       newOptions.headers = {
         Accept: 'application/json',
         // 'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': 'application/x-www-form-urlencoded',
         ...newOptions.headers,
       };
       // newOptions.body = JSON.stringify(newOptions.body);
@@ -67,7 +73,7 @@ export default function request(url, options) {
     }
   }
 
-  return fetch(url, newOptions)
+  return fetch(restUrl, newOptions)
     .then(checkStatus)
     .then(response => {
       if (newOptions.method === 'DELETE' || response.status === 204) {
