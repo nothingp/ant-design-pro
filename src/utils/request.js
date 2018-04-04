@@ -49,9 +49,11 @@ export default function request(url, options) {
   const token = JSON.parse(accessToken).access_token;
   console.log('accessToken', accessToken);
   const restUrl = token ? url.indexOf('?') > -1 ? (`${url}&access_token=${token}`) : (`${url}?access_token=${token}`) : url;
-  const defaultOptions = {
-    credentials: 'include',
-  };
+  const defaultOptions = url.indexOf('oauth/token') > -1 ?
+    {
+      credentials: 'include',
+    } :
+    {};
   const newOptions = { ...defaultOptions, ...options };
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
     if (!(newOptions.body instanceof FormData)) {

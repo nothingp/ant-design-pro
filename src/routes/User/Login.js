@@ -7,17 +7,14 @@ import styles from './Login.less';
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
-@connect(({ login, test, loading }) => ({
+@connect(({ login, loading }) => ({
   login,
-  test,
   submitting: loading.effects['login/login'],
-  testing: loading.effects['test/test'],
 }))
 export default class LoginPage extends Component {
   state = {
     type: 'account',
     autoLogin: true,
-    // disabled: false,
   };
 
   onTabChange = type => {
@@ -38,14 +35,13 @@ export default class LoginPage extends Component {
   };
 
   handleTest = () => {
-    console.log('log', 3333333333333);
+    const { type } = this.state;
     this.props.dispatch({
-      type: 'test/test',
-      payload: {},
+      type: 'login/test',
+      payload: {
+        type,
+      },
     });
-    // this.setState({
-    //   disabled: true,
-    // })
   };
 
   changeAutoLogin = e => {
@@ -66,17 +62,17 @@ export default class LoginPage extends Component {
         <Login defaultActiveKey={type} onTabChange={this.onTabChange} onSubmit={this.handleSubmit}>
           <Tab key="account" tab="账户密码登录">
             {login.status === 'error' &&
-            login.type === 'account' &&
-            !login.submitting &&
-            this.renderMessage('账户或密码错误（admin/888888）')}
+              login.type === 'account' &&
+              !login.submitting &&
+              this.renderMessage('账户或密码错误（admin/888888）')}
             <UserName name="username" placeholder="admin/user" defaultValue="user" />
             <Password name="password" placeholder="888888/123456" defaultValue="123456" />
           </Tab>
           <Tab key="mobile" tab="手机号登录">
             {login.status === 'error' &&
-            login.type === 'mobile' &&
-            !login.submitting &&
-            this.renderMessage('验证码错误')}
+              login.type === 'mobile' &&
+              !login.submitting &&
+              this.renderMessage('验证码错误')}
             <Mobile name="mobile" />
             <Captcha name="captcha" />
           </Tab>

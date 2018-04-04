@@ -1,5 +1,5 @@
 import { routerRedux } from 'dva/router';
-import { fakeAccountLogin } from '../services/api';
+import { fakeAccountLogin, fakeTesting } from '../services/api';
 import { setAuthority } from '../utils/authority';
 import { reloadAuthorized } from '../utils/Authorized';
 
@@ -11,7 +11,7 @@ export default {
   },
 
   effects: {
-    * login({ payload }, { call, put }) {
+    *login({ payload }, { call, put }) {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
@@ -27,11 +27,7 @@ export default {
         localStorage.setItem('accessToken', JSON.stringify(response));
       }
     },
-    // *test({ payload }, { call, put }) {
-    //   const response = yield call(fakeTesting, payload);
-    //   console.log('response', response);
-    // },
-    * logout(_, { put, select }) {
+    *logout(_, { put, select }) {
       try {
         // get location pathname
         const urlParams = new URL(window.location.href);
@@ -51,6 +47,14 @@ export default {
         yield put(routerRedux.push('/user/login'));
       }
     },
+    *test({ payload }, { call, put }) {
+      const response = yield call(fakeTesting, payload);
+      yield put({
+        type: 'changeTestStatus',
+        payload: response,
+      });
+      window.console.log('response', response);
+    },
   },
 
   reducers: {
@@ -60,6 +64,12 @@ export default {
         ...state,
         status: payload.status,
         type: payload.type,
+      };
+    },
+    changeTestStatus(state, { payload }) {
+      return {
+        ...state,
+        ...payload,
       };
     },
   },

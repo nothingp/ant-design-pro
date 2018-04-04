@@ -67,12 +67,13 @@ export async function fakeAccountLogin(params) {
   });
 }
 
-// export async function fakeTesting(params) {
-//   return request('http://gateway.test.fengchaoli.com/rest/open/api/test/demo', {
-//     method: 'POST',
-//     body: { ...params, id: 1 },
-//   });
-// }
+export async function fakeTesting(params) {
+  return request('http://2811backend.fengchaoli.com/api/anon/public/captcha/get', {
+    // return request('http://gateway.test.fengchaoli.com/open/api/test/demo', {
+    method: 'POST',
+    body: { ...params, id: 1 },
+  });
+}
 
 export async function fakeRegister(params) {
   return request('/api/register', {
