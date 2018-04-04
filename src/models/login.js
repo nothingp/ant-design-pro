@@ -60,6 +60,7 @@ export default {
   reducers: {
     changeLoginStatus(state, { payload }) {
       setAuthority(payload.currentAuthority);
+      window.console.log('changeLoginStatus', state);
       return {
         ...state,
         status: payload.status,
@@ -67,6 +68,7 @@ export default {
       };
     },
     changeTestStatus(state, { payload }) {
+      window.console.log('changeTestStatus', state);
       return {
         ...state,
         ...payload,
