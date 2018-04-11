@@ -32,18 +32,17 @@ export default class Index extends Component {
   render() {
     return (
       <div className={styles.header} id="header" style={this.props.style}>
-        <div className={styles.headerTop}>
+        {/* <div className={styles.headerTop}>
           <div className={styles.container}>
             <div className={styles.toLeft}>客服热线：400-990-1619</div>
             <div className={styles.toRight}>
               {' '}
-              {/* styles.top-info */}
               <Link to="/about-us">关于蜂巢里</Link>
               <Link to="/newbie">新手指南</Link>
               <Link to="/join/job">加入我们</Link>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={styles.headerNav}>
           <div className={styles.container}>
             <div className={styles.logo}>
