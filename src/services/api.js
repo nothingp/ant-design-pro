@@ -61,15 +61,15 @@ export async function queryFakeList(params) {
 }
 
 export async function fakeAccountLogin(params) {
-  return request('http://gateway.test.fengchaoli.com/uaa/oauth/token', {
+  return request('http://290backend.fengchaoli.com/uaa/oauth/token?grant_type=client_credentials', {
     method: 'POST',
-    body: { ...params, grant_type: 'client_credentials' },
+    body: { ...params },
   });
 }
 
 export async function fakeTesting(params) {
   return request('http://2811backend.fengchaoli.com/api/anon/public/captcha/get', {
-  // return request('http://gateway.test.fengchaoli.com/open/api/test/demo', {
+    // return request('http://gateway.test.fengchaoli.com/open/api/test/demo', {
     method: 'POST',
     body: { ...params, id: 1 },
   });
