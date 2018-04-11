@@ -15,16 +15,12 @@ export default {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
-        payload: response,
+        payload: { ...response, ...payload },
       });
-      window.console.log('response', response);
-      // Login successfully
-      if (response.status === 'ok') {
-        reloadAuthorized();
-        yield put(routerRedux.push('/'));
-      }
       if (response && response.access_token) {
         localStorage.setItem('accessToken', JSON.stringify(response));
+        reloadAuthorized();
+        yield put(routerRedux.push('/'));
       }
     },
     *logout(_, { put, select }) {
@@ -59,8 +55,7 @@ export default {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
-      window.console.log('changeLoginStatus', state);
+      setAuthority(payload.username);
       return {
         ...state,
         status: payload.status,
@@ -68,7 +63,6 @@ export default {
       };
     },
     changeTestStatus(state, { payload }) {
-      window.console.log('changeTestStatus', state);
       return {
         ...state,
         ...payload,

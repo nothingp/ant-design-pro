@@ -47,7 +47,6 @@ function checkStatus(response) {
 export default function request(url, options) {
   const accessToken = localStorage.getItem('accessToken') || '{}';
   const token = JSON.parse(accessToken).access_token;
-  console.log('accessToken', accessToken);
   const restUrl = token ? url.indexOf('?') > -1 ? (`${url}&access_token=${token}`) : (`${url}?access_token=${token}`) : url;
   const defaultOptions = url.indexOf('oauth/token') > -1 ?
     {
