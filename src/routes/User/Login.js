@@ -59,7 +59,6 @@ export default class LoginPage extends Component {
   render() {
     const { login, submitting } = this.props;
     const { type } = this.state;
-    window.console.log('login', login);
     return (
       <div className={styles.main}>
         <div className={styles.left}>

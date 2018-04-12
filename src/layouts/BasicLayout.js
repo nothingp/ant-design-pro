@@ -15,6 +15,7 @@ import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import { getMenuData } from '../common/menu';
 import logo from '../assets/logo.svg';
+import TopHeader from '../components/Header';
 // import { relative } from 'path';
 
 const { Content, Header, Footer } = Layout;
@@ -182,6 +183,7 @@ class BasicLayout extends React.PureComponent {
     const bashRedirect = this.getBashRedirect();
     const layout = (
       <Layout>
+        <TopHeader />
         <SiderMenu
           logo={logo}
           // 不带Authorized参数的情况下如果没有权限,会强制跳到403界面
@@ -252,7 +254,8 @@ class BasicLayout extends React.PureComponent {
               ]} */
               copyright={
                 <Fragment>
-                  信基蜂巢版权所有 2016-2018粤ICP备：16070165号-1增值电信业务经营许可证：粤B-20160748
+                  信基蜂巢版权所有
+                  2016-2018粤ICP备：16070165号-1增值电信业务经营许可证：粤B-20160748
                 </Fragment>
               }
             />

@@ -6,6 +6,7 @@ import GlobalFooter from '../components/GlobalFooter';
 import styles from './UserLayout.less';
 // import logo from '../assets/logo.svg';
 import { getRoutes } from '../utils/utils';
+import Header from '../components/Header';
 
 /* const links = [
   {
@@ -56,6 +57,7 @@ class UserLayout extends React.PureComponent {
               </div>
               <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
             </div> */}
+            <Header />
             <Switch>
               {getRoutes(match.path, routerData).map(item => (
                 <Route

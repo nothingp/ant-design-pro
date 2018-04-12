@@ -6,7 +6,6 @@ import dynamic from 'dva/dynamic';
 import { getRouterData } from './common/router';
 import Authorized from './utils/Authorized';
 import styles from './index.less';
-import Header from './components/Header';
 
 const { ConnectedRouter } = routerRedux;
 const { AuthorizedRoute } = Authorized;
@@ -22,18 +21,15 @@ function RouterConfig({ history, app }) {
   return (
     <LocaleProvider locale={zhCN}>
       <ConnectedRouter history={history}>
-        <div>
-          <Header />
-          <Switch>
-            <Route path="/user" component={UserLayout} />
-            <AuthorizedRoute
-              path="/"
-              render={props => <BasicLayout {...props} />}
-              authority={['admin', 'user']}
-              redirectPath="/user/login"
-            />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/user" component={UserLayout} />
+          <AuthorizedRoute
+            path="/"
+            render={props => <BasicLayout {...props} />}
+            authority={['admin', 'user']}
+            redirectPath="/user/login"
+          />
+        </Switch>
       </ConnectedRouter>
     </LocaleProvider>
   );
