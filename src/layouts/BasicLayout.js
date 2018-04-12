@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Icon, message } from 'antd';
+import { Layout, message } from 'antd';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'dva';
 import { Route, Redirect, Switch, routerRedux } from 'dva/router';
@@ -15,6 +15,7 @@ import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import { getMenuData } from '../common/menu';
 import logo from '../assets/logo.svg';
+// import { relative } from 'path';
 
 const { Content, Header, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
@@ -227,9 +228,9 @@ class BasicLayout extends React.PureComponent {
               <Route render={NotFound} />
             </Switch>
           </Content>
-          <Footer style={{ padding: 0 }}>
+          <Footer style={{ padding: 0, position: 'relative' }}>
             <GlobalFooter
-              links={[
+              /* links={[
                 {
                   key: 'Pro 首页',
                   title: 'Pro 首页',
@@ -248,10 +249,10 @@ class BasicLayout extends React.PureComponent {
                   href: 'http://ant.design',
                   blankTarget: true,
                 },
-              ]}
+              ]} */
               copyright={
                 <Fragment>
-                  Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
+                  信基蜂巢版权所有 2016-2018粤ICP备：16070165号-1增值电信业务经营许可证：粤B-20160748
                 </Fragment>
               }
             />
