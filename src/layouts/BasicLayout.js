@@ -7,7 +7,7 @@ import { Route, Redirect, Switch, routerRedux } from 'dva/router';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import { enquireScreen } from 'enquire-js';
-import GlobalHeader from '../components/GlobalHeader';
+// import GlobalHeader from '../components/GlobalHeader';
 import GlobalFooter from '../components/GlobalFooter';
 import SiderMenu from '../components/SiderMenu';
 import NotFound from '../routes/Exception/404';
@@ -18,7 +18,7 @@ import logo from '../assets/logo.svg';
 import TopHeader from '../components/Header';
 // import { relative } from 'path';
 
-const { Content, Header, Footer } = Layout;
+const { Content, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
 
 /**
@@ -172,10 +172,10 @@ class BasicLayout extends React.PureComponent {
   };
   render() {
     const {
-      currentUser,
+      // currentUser,
       collapsed,
-      fetchingNotices,
-      notices,
+      // fetchingNotices,
+      // notices,
       routerData,
       match,
       location,
@@ -197,7 +197,7 @@ class BasicLayout extends React.PureComponent {
           onCollapse={this.handleMenuCollapse}
         />
         <Layout>
-          <Header style={{ padding: 0 }}>
+          {/* <Header style={{ padding: 0 }}>
             <GlobalHeader
               logo={logo}
               currentUser={currentUser}
@@ -210,7 +210,7 @@ class BasicLayout extends React.PureComponent {
               onMenuClick={this.handleMenuClick}
               onNoticeVisibleChange={this.handleNoticeVisibleChange}
             />
-          </Header>
+          </Header> */}
           <Content style={{ margin: '24px 24px 0', height: '100%' }}>
             <Switch>
               {redirectData.map(item => (

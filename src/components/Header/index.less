@@ -5,7 +5,9 @@
 .header {
   position: fixed;
   top: 0;
-  width: 100%; // 去掉vw，改用%, 因为在window上, 100vw时宽度跟body元素宽度多了个滚动条宽度, by: fan
+  left: 0;
+  right: 0;
+  // width: 100%; // 去掉vw，改用%, 因为在window上, 100vw时宽度跟body元素宽度多了个滚动条宽度, by: fan
   // min-width: @container;
   background: #fff;
   z-index: 999;
@@ -29,10 +31,11 @@
 .toRight {
   float: right;
 }
+
 .container {
   margin-left: auto;
   margin-right: auto;
-  width: 1180px;
+  width: @container;
   height: 100%;
   zoom: 1;
   &:before,

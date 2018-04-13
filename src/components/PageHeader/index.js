@@ -157,6 +157,7 @@ export default class PageHeader extends PureComponent {
       tabActiveKey,
       tabDefaultActiveKey,
       tabBarExtraContent,
+      isBreadcrumb = 'true',
     } = this.props;
     const clsString = classNames(styles.pageHeader, className);
     const breadcrumb = this.conversionBreadcrumbList();
@@ -170,7 +171,7 @@ export default class PageHeader extends PureComponent {
 
     return (
       <div className={clsString}>
-        {breadcrumb}
+        {isBreadcrumb === 'true' && breadcrumb}
         <div className={styles.detail}>
           {logo && <div className={styles.logo}>{logo}</div>}
           <div className={styles.main}>

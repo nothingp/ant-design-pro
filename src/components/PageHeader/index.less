@@ -1,8 +1,9 @@
 @import '~antd/lib/style/themes/default.less';
 
 .pageHeader {
-  background: @component-background;
-  padding: 16px 32px 0 32px;
+  // background: @component-background;
+  // padding: 16px 32px 0 32px;
+  padding: 30px 32px 0 0;
   border-bottom: @border-width-base @border-style-base @border-color-split;
 
   .detail {
@@ -39,15 +40,10 @@
     }
   }
 
-  .title {
-    font-size: 20px;
-    font-weight: 500;
-    color: @heading-color;
-  }
-
   .action {
     margin-left: 56px;
     min-width: 266px;
+    margin-bottom: 16px;
 
     :global {
       .ant-btn-group:not(:last-child),
@@ -69,9 +65,11 @@
     flex: auto;
   }
 
-  .title,
-  .action {
-    margin-bottom: 16px;
+  .title {
+    margin-bottom: 28px;
+    font-size: 2em;
+    font-weight: 500;
+    color: @heading-color;
   }
 
   .logo,

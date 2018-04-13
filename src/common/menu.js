@@ -1,7 +1,7 @@
 import { isUrl } from '../utils/utils';
 
 const menuData = [
-  {
+  /*   {
     name: 'dashboard',
     icon: 'dashboard',
     path: 'dashboard',
@@ -21,11 +21,13 @@ const menuData = [
         // hideInMenu: true,
       },
     ],
-  },
+  }, */
   {
-    name: '表单页',
-    icon: 'form',
+    name: '表单中心',
+    // icon: 'form',
+    icon: 'iconfont icon-ic_shopping_cart_bla',
     path: 'form',
+    color: 'c-blue',
     children: [
       {
         name: '基础表单',
@@ -44,8 +46,10 @@ const menuData = [
   },
   {
     name: '列表页',
-    icon: 'table',
+    // icon: 'table',
+    icon: 'iconfont icon-ic_poll_black_px',
     path: 'list',
+    color: 'c-green',
     children: [
       {
         name: '查询表格',
@@ -59,7 +63,7 @@ const menuData = [
         name: '卡片列表',
         path: 'card-list',
       },
-      {
+      /* {
         name: '搜索列表',
         path: 'search',
         children: [
@@ -76,10 +80,10 @@ const menuData = [
             path: 'applications',
           },
         ],
-      },
+      }, */
     ],
   },
-  {
+  /*   {
     name: '详情页',
     icon: 'profile',
     path: 'profile',
@@ -94,8 +98,8 @@ const menuData = [
         authority: 'admin',
       },
     ],
-  },
-  {
+  }, */
+  /*   {
     name: '结果页',
     icon: 'check-circle-o',
     path: 'result',
@@ -109,8 +113,8 @@ const menuData = [
         path: 'fail',
       },
     ],
-  },
-  {
+  }, */
+  /*   {
     name: '异常页',
     icon: 'warning',
     path: 'exception',
@@ -133,7 +137,7 @@ const menuData = [
         hideInMenu: true,
       },
     ],
-  },
+  }, */
   {
     name: '账户',
     icon: 'user',

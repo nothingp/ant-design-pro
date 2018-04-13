@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import { Link } from 'dva/router';
 import styles from './index.less';
@@ -17,7 +17,8 @@ const getIcon = icon => {
     return <img src={icon} alt="icon" className={`${styles.icon} sider-menu-item-img`} />;
   }
   if (typeof icon === 'string') {
-    return <Icon type={icon} />;
+    // return <Icon type={icon} />;icon-ic_shopping_cart_bla
+    return <i className={`${icon}`} />;
   }
   return icon;
 };
@@ -118,6 +119,7 @@ export default class SiderMenu extends PureComponent {
       if (childrenItems && childrenItems.length > 0) {
         return (
           <SubMenu
+            className={item.color}
             title={
               item.icon ? (
                 <span>
@@ -189,7 +191,7 @@ export default class SiderMenu extends PureComponent {
     });
   };
   render() {
-    const { logo, collapsed, onCollapse } = this.props;
+    const { collapsed, onCollapse } = this.props;
     const { openKeys } = this.state;
     // Don't show popup menu when it is been collapsed
     const menuProps = collapsed
@@ -212,15 +214,15 @@ export default class SiderMenu extends PureComponent {
         width={256}
         className={styles.sider}
       >
-        <div className={styles.logo} key="logo">
+        {/* <div className={styles.logo} key="logo">
           <Link to="/">
             <img src={logo} alt="logo" />
             <h1>Ant Design Pro</h1>
           </Link>
-        </div>
+        </div> */}
         <Menu
           key="Menu"
-          theme="dark"
+          theme="light"
           mode="inline"
           {...menuProps}
           onOpenChange={this.handleOpenChange}
