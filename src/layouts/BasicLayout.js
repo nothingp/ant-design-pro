@@ -230,7 +230,7 @@ class BasicLayout extends React.PureComponent {
               <Route render={NotFound} />
             </Switch>
           </Content>
-          <Footer style={{ padding: 0, position: 'relative' }}>
+          <Footer style={{ padding: 0}}>
             <GlobalFooter
               /* links={[
                 {
